@@ -18,6 +18,8 @@ COPY ./docker/php-fpm/entrypoint.sh /usr/local/bin/docker-php-entrypoint
 RUN chmod +x /usr/local/bin/docker-php-entrypoint
 
 COPY ./docker/php-fpm/conf.d /usr/local/etc/php/conf.d
+COPY --from=composer /usr/bin/composer /usr/bin/composer
+
 
 WORKDIR ./app
 
