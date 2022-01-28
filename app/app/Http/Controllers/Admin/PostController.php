@@ -16,9 +16,10 @@ class PostController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
+
     public function index()
     {
-        $posts = Post::paginate(5);
+        $posts = Post::with('category', 'tags')->paginate(5);
 
         return view('admin.posts.index', compact('posts'));
     }

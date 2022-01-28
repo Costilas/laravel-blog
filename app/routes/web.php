@@ -12,8 +12,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/', 'App\Http\Controllers\UserController@index')->name('home');
+
 //Admin side
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
    Route::get('/', 'App\Http\Controllers\Admin\MainController@index')->name('admin.index');
    Route::resource('/categories', 'App\Http\Controllers\Admin\CategoryController');
    Route::resource('/tags', 'App\Http\Controllers\Admin\TagController');
@@ -21,3 +24,11 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 //User side
+Route::group(['middleware' => 'guest'], function () {
+    Route::get('/register', 'App\Http\Controllers\UserController@create')->name('register.create');
+    Route::post('/register', 'App\Http\Controllers\UserController@store')->name('register.store');
+    Route::get('/login', 'App\Http\Controllers\UserController@loginForm')->name('login.form');
+    Route::post('/login', 'App\Http\Controllers\UserController@login')->name('login');
+});
+
+Route::get('/logout', 'App\Http\Controllers\UserController@logout')->name('logout')->middleware('auth');
