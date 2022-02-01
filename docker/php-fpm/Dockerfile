@@ -17,11 +17,23 @@ RUN mv $PHP_INI_DIR/php.ini-development $PHP_INI_DIR/php.ini
 COPY ./docker/php-fpm/entrypoint.sh /usr/local/bin/docker-php-entrypoint
 RUN chmod +x /usr/local/bin/docker-php-entrypoint
 
+
+#сделать композер доступным внутри контейнера
 COPY ./docker/php-fpm/conf.d /usr/local/etc/php/conf.d
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 
 
+#also for ckfinder to get it work
+RUN apk add --no-cache libpng libpng-dev && docker-php-ext-install gd && apk del libpng-dev
+
+#for installing ckfinder via composer
+RUN apk add --no-cache \
+      libzip-dev \
+      zip \
+    && docker-php-ext-install zip
+
 WORKDIR ./app
+
 
 
 

@@ -20,11 +20,11 @@
                 </div>
                 <div class="form-group">
                     <label for="description">Цитата</label>
-                    <textarea class="form-control @error('title') is-invalid @enderror" rows="5" name="description" placeholder="Цитата..."></textarea>
+                    <textarea class="form-control @error('title') is-invalid @enderror" rows="5" id="description" name="description" placeholder="Цитата..."></textarea>
                 </div>
                 <div class="form-group">
                     <label for="content">Контент</label>
-                    <textarea class="form-control @error('title') is-invalid @enderror" rows="7" name="content" placeholder="Основной текст статьи..."></textarea>
+                    <textarea class="form-control @error('title') is-invalid @enderror" rows="7" id="content" name="content" placeholder="Основной текст статьи..."></textarea>
                 </div>
                 <div class="form-group">
                     <label for="category_id">Категория</label>

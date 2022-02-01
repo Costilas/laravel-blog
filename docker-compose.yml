@@ -1,5 +1,3 @@
-
-  
 version: "3.7"
 
 volumes:
@@ -24,6 +22,7 @@ services:
       PHP_IDE_CONFIG: serverName=Test
     volumes:
       - ./app:/var/www/html/app
+
 
   mysql:
     image: mysql

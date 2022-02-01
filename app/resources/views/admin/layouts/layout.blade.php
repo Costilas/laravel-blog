@@ -9,6 +9,12 @@
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="{{asset('assets/admin/css/admin.css')}}">
+    <style>
+        .ck-editor__editable_inline {
+            min-height: 300px;
+        }
+
+    </style>
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -132,7 +138,13 @@
     </aside>
     <!-- /.control-sidebar -->
 </div>
-<!-- ./wrapper -->
+
 <script src="{{asset('assets/admin/js/admin.js')}}"></script>
+<script>
+    $(document).ready(function () {
+      bsCustomFileInput.init();
+    });
+</script>
+@include('admin.wysiwyg.wysiwyg')
 </body>
 </html>
