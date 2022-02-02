@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -20,6 +21,6 @@ class HomeController extends Controller
         $post->views += 1;
         $post->update();
 
-        return view('user.post', compact('post'));
+        return view('user.post.show', compact('post'));
     }
 }

@@ -13,7 +13,6 @@ class MainController extends Controller
 {
     public function index()
     {
-
         $categoryStatistics = count(Category::all());
         $tagStatistics = count(Tag::all());
         $postStatistics = count(Post::all());

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreCategory;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -28,7 +27,6 @@ class CategoryController extends Controller
      */
     public function create()
     {
-
         return view('admin.categories.create');
     }
 
@@ -75,8 +73,8 @@ class CategoryController extends Controller
             'title' => 'required|unique:categories'
         ]);
         $category = Category::find($id);
-        // $category->slug = null;
         $category->update($request->all());
+
         return redirect()->route('categories.index')->with('success', 'Изменения сохранены');
     }
 
@@ -89,10 +87,10 @@ class CategoryController extends Controller
     public function destroy($id)
     {
          $category = Category::find($id);
-         if($category->posts->count()){
+         if($category->posts->count())
+         {
              return redirect()->route('categories.index')->with('error', 'Ошибка удаления: У категории есть связанные статьи');
          }
-
         $category->delete();
 
         return redirect()->route('categories.index')->with('success', 'Категория успешно удалена');

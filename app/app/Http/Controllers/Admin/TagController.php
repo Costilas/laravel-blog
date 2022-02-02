@@ -57,6 +57,7 @@ class TagController extends Controller
     public function edit($id)
     {
         $tag = Tag::find($id);
+
         return  view('admin.tags.edit', compact('tag'));
     }
 
@@ -72,6 +73,7 @@ class TagController extends Controller
         $request->validate([
             'title' => 'required'
         ]);
+
         $tag = Tag::find($id);
         $tag->update($request->all());
 
@@ -87,7 +89,9 @@ class TagController extends Controller
     public function destroy($id)
     {
         $tag = Tag::find($id);
-        if($tag->posts->count()){
+
+        if($tag->posts->count())
+        {
             return redirect()->route('tags.index')->with('error', 'Ошибка удаления: Тэг закреплен за статьями.');
         }
 

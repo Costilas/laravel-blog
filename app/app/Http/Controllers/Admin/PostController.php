@@ -54,7 +54,6 @@ class PostController extends Controller
         ]);
 
         $data = $request->all();
-
         $data['thumbnail'] = Post::uploadImage($request);
 
         $post = Post::create($data);
@@ -98,7 +97,8 @@ class PostController extends Controller
         $post = Post::find($id);
         $data = $request->all();
 
-        if($request->thumbnail){
+        if($request->thumbnail)
+        {
             $data['thumbnail'] = Post::uploadImage($request, $post->thumbnail);
         }
 

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -19,7 +18,7 @@ class UserController extends Controller
 
     public function create()
     {
-        return view('user.register');
+        return view('user.auth.register');
     }
 
 
@@ -45,7 +44,7 @@ class UserController extends Controller
 
     public function loginForm()
     {
-        return view('user.login');
+        return view('user.auth.login');
     }
 
 

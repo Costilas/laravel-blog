@@ -13,10 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
-Route::get('/article/{slug}', 'App\Http\Controllers\HomeController@show')->name('posts.single');
-Route::get('/category/{slug}','App\Http\Controllers\CategoryController@show' )->name('categories.single');
-Route::get('/tag/{slug}','App\Http\Controllers\TagController@show' )->name('tags.single');
+Route::get('/', 'App\Http\Controllers\User\HomeController@index')->name('home');
+Route::get('/article/{slug}', 'App\Http\Controllers\User\HomeController@show')->name('posts.single');
+Route::get('/category/{slug}','App\Http\Controllers\User\CategoryController@show' )->name('categories.single');
+Route::get('/tag/{slug}','App\Http\Controllers\User\TagController@show' )->name('tags.single');
+Route::get('/search', 'App\Http\Controllers\User\SearchController@index')->name('search');
 
 //Admin side
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {

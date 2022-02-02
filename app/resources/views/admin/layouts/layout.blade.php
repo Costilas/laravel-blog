@@ -142,7 +142,7 @@
 <script src="{{asset('assets/admin/js/admin.js')}}"></script>
 <script>
     $(document).ready(function () {
-      bsCustomFileInput.init();
+        bsCustomFileInput.init();
     });
 </script>
 @include('admin.wysiwyg.wysiwyg')
