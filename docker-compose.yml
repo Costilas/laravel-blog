@@ -34,10 +34,9 @@ services:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_USER=sergey
       - MYSQL_PASSWORD=12345
-      - MYSQL_DATABASE=laravel
+      - MYSQL_DATABASE=laravel_blog
 
   adminer:
     image: adminer
-    restart: always
     ports:
       - "8095:8080"
